@@ -7,7 +7,7 @@
 static NSString *const MTDataStoreSQLiteFileName = @"db.sqlite";
 static NSString *const MTDataStoreModelFileName = @"Model";
 
-static NSString * const MTDataStoreErrorDomain = @"com.maxxx.VIPERDemoApp.DataStoreErrorDomain";
+static NSString * const MTDataStoreErrorDomain = @"MTDataStore.ErrorDomain";
 
 typedef NS_ENUM(NSUInteger, MTDataStoreErrorType) {
     
