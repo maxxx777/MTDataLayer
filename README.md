@@ -36,59 +36,61 @@ It presents managed object (NSManagedObject) with given entityName and given add
 
 **Example**
 
-`- (id)mappedObjectFromManagedObject: (NSManagedObject *)managedObject`
-`{`
-`    if (managedObject == nil) {`
+```objective-c
+- (id)mappedObjectFromManagedObject: (NSManagedObject *)managedObject
+{
+    if (managedObject == nil) {
 
-`        return nil;`
+        return nil;
         
-`    } else if ([managedObject isKindOfClass:[MTManagedCity class]]) {`
+    } else if ([managedObject isKindOfClass:[MTManagedCity class]]) {
         
-`        NSManagedObject *managedCountry = [managedObject valueForKey:@"country"];`
+        NSManagedObject *managedCountry = [managedObject valueForKey:@"country"];
         
-`        id mappedCountry = [self mappedObjectFromManagedObject:managedCountry];`
+        id mappedCountry = [self mappedObjectFromManagedObject:managedCountry];
         
-`        return [[MTMappedCity alloc] initWithItemId:[managedObject valueForKey:@"itemId"]`
-`                                           itemName:[managedObject valueForKey:@"itemName"]`
-`                                            country:mappedCountry`
-`                                         population:[managedObject valueForKey:@"population"]];`
-`    }`
+        return [[MTMappedCity alloc] initWithItemId:[managedObject valueForKey:@"itemId"]
+                                           itemName:[managedObject valueForKey:@"itemName"]
+                                            country:mappedCountry
+                                         population:[managedObject valueForKey:@"population"]];
+    }
     
-`    return nil;`
-`}`
+    return nil;
+}
 
-`- (NSDictionary *)managedObjectDictFromMappedObject:(id)mappedObject`
-`                                     additionalData:(id)additionalData`
-`                                         entityName:(NSString *)entityName`
-`{    `
-`    if ([entityName isEqualToString:@"MTManagedCity"]) {`
+- (NSDictionary *)managedObjectDictFromMappedObject:(id)mappedObject
+                                     additionalData:(id)additionalData
+                                         entityName:(NSString *)entityName
+{    
+    if ([entityName isEqualToString:@"MTManagedCity"]) {
         
-`        NSMutableDictionary* result = [[NSMutableDictionary alloc] init];`
-`        MTMappedCity *mappedCity = (MTMappedCity *)mappedObject;`
+        NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
+        MTMappedCity *mappedCity = (MTMappedCity *)mappedObject;
         
-`        if (mappedCity.itemId) {`
-`            result[@"itemId"] = mappedCity.itemId;`
-`        }`
+        if (mappedCity.itemId) {
+            result[@"itemId"] = mappedCity.itemId;
+        }
         
-`        if (mappedCity.itemName) {`
-`            result[@"itemName"] = mappedCity.itemName;`
-`        }`
+        if (mappedCity.itemName) {
+            result[@"itemName"] = mappedCity.itemName;
+        }
       
-`        if (mappedCity.population) {`
-`            result[@"population"] = mappedCity.population;`
-`        }`
+        if (mappedCity.population) {
+            result[@"population"] = mappedCity.population;
+        }
         
-`        NSManagedObject *country = (NSManagedObject *)additionalData;`
+        NSManagedObject *country = (NSManagedObject *)additionalData;
         
-`        if (country != nil) {`
-`            result[@"country"] = country;`
-`        }`
+        if (country != nil) {
+            result[@"country"] = country;
+        }
         
-`        return result;`
-`    }`
+        return result;
+    }
 
     return nil;
-`}`
+}
+```
 
 DataStore
 ====================
