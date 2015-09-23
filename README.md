@@ -24,13 +24,17 @@ Copy files from repository into your project and include `MTDataMapping.h`.
 
 **Description**
 
-`- (id)mappedObjectFromManagedObject: (NSManagedObject *)managedObject`
+```objective-c
+- (id)mappedObjectFromManagedObject: (NSManagedObject *)managedObject
+```
 
 It presents mapped object (PONSO) from given managed object (NSManagedObject).
 
-`- (NSDictionary*)managedObjectDictFromMappedObject: (id)mappedObject`
-`                                    additionalData: (id)additionalData`
-`                                        entityName: (NSString *)entityName`
+```objective-c
+- (NSDictionary*)managedObjectDictFromMappedObject: (id)mappedObject
+                                    additionalData: (id)additionalData
+                                        entityName: (NSString *)entityName
+```                                        
 
 It presents managed object (NSManagedObject) with given entityName and given additional data from given mapped object (PONSO).
 
